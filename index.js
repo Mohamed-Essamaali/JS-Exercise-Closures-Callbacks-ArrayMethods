@@ -189,10 +189,10 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
 */
 function getFullNames(runners) {
    const fullName = [];
-     runners.forEach((e)=>{
-     fullName.push(e.first_name,e.last_name);
+     runners.forEach((name)=>{
+     return fullName.push((`${name.last_name}, ${name.first_name}`));
     });
-return fullName;
+  return fullName;
 }
  
 
@@ -230,9 +230,15 @@ function firstNamesAllCaps(runners) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function getRunnersByTShirtSize(runners,tShirtSize) {
+ 
+ 
+    return   runners.filter((shirts)=>(tShirtSize === shirts.shirt_size)
+    );
+       
+     }
+
+  
 
 /**
  * ### Challenge `tallyUpDonations`
@@ -244,8 +250,10 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  const don = [];
+  don.push(runners.reduce((acc,init)=>(acc + init),0));
+  return don;
 }
 
 /////////////// CLOSURES ///////////////
@@ -266,11 +274,11 @@ function tallyUpDonations(/* CODE HERE */) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
-  }
-  // BROKEN CODE ENDS
+  let count = 0;
+  return ()=>{
+      return count++;
+      }
+ 
 }
 
 /**
@@ -293,8 +301,19 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(limit) {
+  let count = 0;
+  return ()=>{
+
+    if(count<=limit){
+
+      return count++;
+    }else{
+    count= 0;
+    return count++;
+    }
+  }
+ 
 }
 
 /////////////// END OF CHALLENGE ///////////////
